@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Environments
+.venv/
+venv/
+env/
+
+# Local app/runtime files
+.streamlit/secrets.toml
+*.log
+
+# Generated datasets that can be rebuilt with scripts/run_project_pipeline.py
+data/processed/*.csv
+outputs/predictions/*.csv
+outputs/submission/*.csv
+
+# Keep deploy-critical scoring artifacts tracked for Streamlit Community Cloud.
+!models/final_propensity_model.joblib
+!outputs/predictions/test_customer_scores.csv
+!outputs/submission/submission.csv
+
+# Keep source data managed outside commits when required by data licensing.
+data/raw/*.zip

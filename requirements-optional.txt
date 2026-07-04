@@ -1,0 +1,6 @@
+# Optional modeling and interpretability accelerators.
+# The pipeline auto-detects these packages when installed.
+xgboost>=2.0
+lightgbm>=4.3
+catboost>=1.2
+shap>=0.45

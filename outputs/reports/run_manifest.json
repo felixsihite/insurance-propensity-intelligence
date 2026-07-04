@@ -1,0 +1,11 @@
+{
+  "final_model": "Hist Gradient Boosting",
+  "project_root": "D:\\Project\\Data Science\\insurance_customer_propensity_prediction_&_customer_intelligence",
+  "data_source": "https://www.kaggle.com/datasets/anmolkumar/health-insurance-cross-sell-prediction",
+  "outputs": {
+    "model": "D:\\Project\\Data Science\\insurance_customer_propensity_prediction_&_customer_intelligence\\models\\final_propensity_model.joblib",
+    "submission": "D:\\Project\\Data Science\\insurance_customer_propensity_prediction_&_customer_intelligence\\outputs\\submission\\submission.csv",
+    "test_scores": "D:\\Project\\Data Science\\insurance_customer_propensity_prediction_&_customer_intelligence\\outputs\\predictions\\test_customer_scores.csv",
+    "model_comparison": "D:\\Project\\Data Science\\insurance_customer_propensity_prediction_&_customer_intelligence\\outputs\\reports\\model_comparison.csv"
+  }
+}

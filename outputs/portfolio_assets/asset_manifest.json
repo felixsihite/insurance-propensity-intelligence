@@ -1,0 +1,35 @@
+{
+  "portfolio_covers": [
+    "outputs\\portfolio_assets\\insurance_propensity_cover_light.png",
+    "outputs\\portfolio_assets\\insurance_propensity_cover_dark.png"
+  ],
+  "dashboard_screenshots": [
+    "outputs\\dashboard_screenshots\\campaign_targeting_dark.png",
+    "outputs\\dashboard_screenshots\\campaign_targeting_light.png",
+    "outputs\\dashboard_screenshots\\customer_segments_dark.png",
+    "outputs\\dashboard_screenshots\\customer_segments_light.png",
+    "outputs\\dashboard_screenshots\\eda_insights_dark.png",
+    "outputs\\dashboard_screenshots\\eda_insights_light.png",
+    "outputs\\dashboard_screenshots\\executive_summary_dark.png",
+    "outputs\\dashboard_screenshots\\executive_summary_light.png",
+    "outputs\\dashboard_screenshots\\interpretability_dark.png",
+    "outputs\\dashboard_screenshots\\interpretability_light.png",
+    "outputs\\dashboard_screenshots\\model_performance_dark.png",
+    "outputs\\dashboard_screenshots\\model_performance_light.png",
+    "outputs\\dashboard_screenshots\\propensity_scoring_dark.png",
+    "outputs\\dashboard_screenshots\\propensity_scoring_light.png"
+  ],
+  "analysis_charts": [
+    "outputs\\charts\\annual_premium_distribution.png",
+    "outputs\\charts\\calibration_curve.png",
+    "outputs\\charts\\confusion_matrix.png",
+    "outputs\\charts\\dashboard_executive_preview.png",
+    "outputs\\charts\\feature_importance.png",
+    "outputs\\charts\\gain_chart.png",
+    "outputs\\charts\\lift_chart.png",
+    "outputs\\charts\\precision_recall_curve.png",
+    "outputs\\charts\\response_distribution.png",
+    "outputs\\charts\\roc_curve.png",
+    "outputs\\charts\\segment_response_rate.png"
+  ]
+}

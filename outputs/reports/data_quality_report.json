@@ -1,0 +1,187 @@
+{
+  "train_shape": [
+    381109,
+    12
+  ],
+  "test_shape": [
+    127037,
+    11
+  ],
+  "sample_submission_shape": [
+    127037,
+    2
+  ],
+  "train_columns": [
+    "id",
+    "Gender",
+    "Age",
+    "Driving_License",
+    "Region_Code",
+    "Previously_Insured",
+    "Vehicle_Age",
+    "Vehicle_Damage",
+    "Annual_Premium",
+    "Policy_Sales_Channel",
+    "Vintage",
+    "Response"
+  ],
+  "test_columns": [
+    "id",
+    "Gender",
+    "Age",
+    "Driving_License",
+    "Region_Code",
+    "Previously_Insured",
+    "Vehicle_Age",
+    "Vehicle_Damage",
+    "Annual_Premium",
+    "Policy_Sales_Channel",
+    "Vintage"
+  ],
+  "missing_values": {
+    "train": {
+      "id": 0,
+      "Gender": 0,
+      "Age": 0,
+      "Driving_License": 0,
+      "Region_Code": 0,
+      "Previously_Insured": 0,
+      "Vehicle_Age": 0,
+      "Vehicle_Damage": 0,
+      "Annual_Premium": 0,
+      "Policy_Sales_Channel": 0,
+      "Vintage": 0,
+      "Response": 0
+    },
+    "test": {
+      "id": 0,
+      "Gender": 0,
+      "Age": 0,
+      "Driving_License": 0,
+      "Region_Code": 0,
+      "Previously_Insured": 0,
+      "Vehicle_Age": 0,
+      "Vehicle_Damage": 0,
+      "Annual_Premium": 0,
+      "Policy_Sales_Channel": 0,
+      "Vintage": 0
+    },
+    "sample_submission": {
+      "id": 0,
+      "Response": 0
+    }
+  },
+  "total_missing_values": {
+    "train": 0,
+    "test": 0,
+    "sample_submission": 0
+  },
+  "duplicate_rows": {
+    "train": 0,
+    "test": 0,
+    "sample_submission": 0
+  },
+  "id_quality": {
+    "train_unique_id": true,
+    "test_unique_id": true,
+    "sample_submission_unique_id": true,
+    "train_test_id_overlap": 0,
+    "test_submission_id_match": true
+  },
+  "target_distribution": {
+    "counts": {
+      "0": 334399,
+      "1": 46710
+    },
+    "positive_rate": 0.12256336113815208,
+    "negative_rate": 0.877436638861848
+  },
+  "schema_comparison": {
+    "train_feature_columns_match_test": true,
+    "target_present_in_test": false,
+    "train_dtypes": {
+      "id": "int64",
+      "Gender": "object",
+      "Age": "int64",
+      "Driving_License": "int64",
+      "Region_Code": "float64",
+      "Previously_Insured": "int64",
+      "Vehicle_Age": "object",
+      "Vehicle_Damage": "object",
+      "Annual_Premium": "float64",
+      "Policy_Sales_Channel": "float64",
+      "Vintage": "int64",
+      "Response": "int64"
+    },
+    "test_dtypes": {
+      "id": "int64",
+      "Gender": "object",
+      "Age": "int64",
+      "Driving_License": "int64",
+      "Region_Code": "float64",
+      "Previously_Insured": "int64",
+      "Vehicle_Age": "object",
+      "Vehicle_Damage": "object",
+      "Annual_Premium": "float64",
+      "Policy_Sales_Channel": "float64",
+      "Vintage": "int64"
+    }
+  },
+  "categorical_level_comparison": {
+    "Gender": {
+      "train_levels": [
+        "Female",
+        "Male"
+      ],
+      "test_levels": [
+        "Female",
+        "Male"
+      ],
+      "levels_only_in_train": [],
+      "levels_only_in_test": []
+    },
+    "Vehicle_Age": {
+      "train_levels": [
+        "1-2 Year",
+        "< 1 Year",
+        "> 2 Years"
+      ],
+      "test_levels": [
+        "1-2 Year",
+        "< 1 Year",
+        "> 2 Years"
+      ],
+      "levels_only_in_train": [],
+      "levels_only_in_test": []
+    },
+    "Vehicle_Damage": {
+      "train_levels": [
+        "No",
+        "Yes"
+      ],
+      "test_levels": [
+        "No",
+        "Yes"
+      ],
+      "levels_only_in_train": [],
+      "levels_only_in_test": []
+    }
+  },
+  "annual_premium_outlier_review": {
+    "min": 2630.0,
+    "q1": 24405.0,
+    "median": 31669.0,
+    "q3": 39400.0,
+    "max": 540165.0,
+    "iqr_lower_fence": 1912.5,
+    "iqr_upper_fence": 61892.5,
+    "outlier_count": 10320,
+    "outlier_rate": 0.0270788672007221
+  },
+  "leakage_audit": {
+    "id_used_as_feature": false,
+    "response_used_as_feature": false,
+    "test_used_for_training": false,
+    "target_encoding_strategy": "Out-of-fold encodings fitted on training folds only; validation/test transformed with train-only mappings."
+  }
+}

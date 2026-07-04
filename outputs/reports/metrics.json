@@ -1,0 +1,58 @@
+{
+  "roc_auc": 0.8584516917412129,
+  "pr_auc": 0.3684582451360435,
+  "precision": 0.2842685992230601,
+  "recall": 0.9321344465853136,
+  "f1": 0.4356722951844903,
+  "balanced_accuracy": 0.8021542448237573,
+  "confusion_matrix": [
+    [
+      44955,
+      21925
+    ],
+    [
+      634,
+      8708
+    ]
+  ],
+  "classification_report": {
+    "0": {
+      "precision": 0.9860931365022264,
+      "recall": 0.672174043062201,
+      "f1-score": 0.7994202847006731,
+      "support": 66880.0
+    },
+    "1": {
+      "precision": 0.2842685992230601,
+      "recall": 0.9321344465853136,
+      "f1-score": 0.4356722951844903,
+      "support": 9342.0
+    },
+    "accuracy": 0.7040355802786598,
+    "macro avg": {
+      "precision": 0.6351808678626433,
+      "recall": 0.8021542448237573,
+      "f1-score": 0.6175462899425816,
+      "support": 76222.0
+    },
+    "weighted avg": {
+      "precision": 0.9000753879878608,
+      "recall": 0.7040355802786598,
+      "f1-score": 0.7548382254781366,
+      "support": 76222.0
+    }
+  },
+  "top_decile_lift": 3.2248809666337546,
+  "capture_rate_top_10_pct": 0.32252194390922717,
+  "capture_rate_top_20_pct": 0.5826375508456434,
+  "capture_rate_top_30_pct": 0.7940483836437594,
+  "best_threshold": {
+    "threshold": 0.65,
+    "precision": 0.3211437298489734,
+    "recall": 0.8103189895097409,
+    "f1": 0.45998663182840127,
+    "balanced_accuracy": 0.7855273177213776
+  },
+  "training_seconds": 11.45,
+  "model_name": "Hist Gradient Boosting"
+}
