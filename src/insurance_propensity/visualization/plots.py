@@ -5,8 +5,10 @@ from __future__ import annotations
 from pathlib import Path
 
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 import seaborn as sns
+from matplotlib.ticker import PercentFormatter
 from sklearn.calibration import calibration_curve
 from sklearn.inspection import permutation_importance
 from sklearn.metrics import ConfusionMatrixDisplay, PrecisionRecallDisplay, RocCurveDisplay
@@ -53,7 +55,7 @@ def save_segment_response(train: pd.DataFrame, output_path: Path) -> None:
     ax.set_title("Observed Response Rate by Cross-Sell Segment")
     ax.set_xlabel("Response Rate")
     ax.set_ylabel("")
-    ax.xaxis.set_major_formatter(lambda x, _: f"{x:.0%}")
+    ax.xaxis.set_major_formatter(PercentFormatter(xmax=1.0, decimals=0))
     fig.tight_layout()
     fig.savefig(output_path, dpi=180)
     plt.close(fig)
@@ -62,7 +64,7 @@ def save_segment_response(train: pd.DataFrame, output_path: Path) -> None:
 def save_premium_distribution(train: pd.DataFrame, output_path: Path) -> None:
     set_theme()
     fig, ax = plt.subplots(figsize=(10, 5))
-    sns.histplot(train["Annual_Premium"], bins=60, color=LIGHT_THEME["teal"], ax=ax)
+    ax.hist(train["Annual_Premium"].astype(float), bins=60, color=LIGHT_THEME["teal"])
     ax.set_title("Annual Premium Distribution")
     ax.set_xlabel("Annual Premium")
     ax.set_ylabel("Customers")
@@ -92,8 +94,8 @@ def save_gain_chart(deciles: pd.DataFrame, output_path: Path) -> None:
     ax.set_title("Cumulative Gain Chart")
     ax.set_xlabel("Cumulative Population Targeted")
     ax.set_ylabel("Cumulative Responders Captured")
-    ax.xaxis.set_major_formatter(lambda x, _: f"{x:.0%}")
-    ax.yaxis.set_major_formatter(lambda y, _: f"{y:.0%}")
+    ax.xaxis.set_major_formatter(PercentFormatter(xmax=1.0, decimals=0))
+    ax.yaxis.set_major_formatter(PercentFormatter(xmax=1.0, decimals=0))
     fig.tight_layout()
     fig.savefig(output_path, dpi=180)
     plt.close(fig)
@@ -145,12 +147,14 @@ def calculate_permutation_importance(model, x_valid: pd.DataFrame, y_valid: pd.S
         sample = sample.sample(max_rows, random_state=42)
         target = target.loc[sample.index]
     result = permutation_importance(model, sample, target, scoring="average_precision", n_repeats=5, random_state=42, n_jobs=-1)
+    importances_mean = np.asarray(result["importances_mean"], dtype=float)
+    importances_std = np.asarray(result["importances_std"], dtype=float)
     importance = (
         pd.DataFrame(
             {
                 "feature": FEATURE_COLUMNS,
-                "importance_mean": result.importances_mean,
-                "importance_std": result.importances_std,
+                "importance_mean": importances_mean,
+                "importance_std": importances_std,
             }
         )
         .sort_values("importance_mean", ascending=False)

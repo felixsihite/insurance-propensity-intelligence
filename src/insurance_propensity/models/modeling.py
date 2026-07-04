@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import importlib
+import importlib.util
 from dataclasses import dataclass
 from typing import Any
 
@@ -55,6 +57,20 @@ class TrainedModelCandidate:
     name: str
     pipeline: Pipeline
     metrics: dict[str, Any]
+
+
+def _optional_estimator(module_name: str, class_name: str) -> type[Any] | None:
+    """Load optional model classes only when their package is installed."""
+    if importlib.util.find_spec(module_name) is None:
+        return None
+
+    try:
+        module = importlib.import_module(module_name)
+    except Exception:
+        return None
+
+    estimator = getattr(module, class_name, None)
+    return estimator if isinstance(estimator, type) else None
 
 
 def build_preprocessor() -> ColumnTransformer:
@@ -115,13 +131,12 @@ def available_model_specs(random_state: int = 42) -> list[tuple[str, Any, bool]]
         ),
     ]
 
-    try:
-        from xgboost import XGBClassifier
-
+    xgb_classifier = _optional_estimator("xgboost", "XGBClassifier")
+    if xgb_classifier is not None:
         specs.append(
             (
                 "XGBoost",
-                XGBClassifier(
+                xgb_classifier(
                     n_estimators=450,
                     learning_rate=0.035,
                     max_depth=5,
@@ -135,16 +150,13 @@ def available_model_specs(random_state: int = 42) -> list[tuple[str, Any, bool]]
                 True,
             )
         )
-    except Exception:
-        pass
 
-    try:
-        from lightgbm import LGBMClassifier
-
+    lgbm_classifier = _optional_estimator("lightgbm", "LGBMClassifier")
+    if lgbm_classifier is not None:
         specs.append(
             (
                 "LightGBM",
-                LGBMClassifier(
+                lgbm_classifier(
                     n_estimators=500,
                     learning_rate=0.035,
                     num_leaves=31,
@@ -157,16 +169,13 @@ def available_model_specs(random_state: int = 42) -> list[tuple[str, Any, bool]]
                 False,
             )
         )
-    except Exception:
-        pass
 
-    try:
-        from catboost import CatBoostClassifier
-
+    catboost_classifier = _optional_estimator("catboost", "CatBoostClassifier")
+    if catboost_classifier is not None:
         specs.append(
             (
                 "CatBoost",
-                CatBoostClassifier(
+                catboost_classifier(
                     iterations=500,
                     depth=6,
                     learning_rate=0.04,
@@ -179,8 +188,6 @@ def available_model_specs(random_state: int = 42) -> list[tuple[str, Any, bool]]
                 False,
             )
         )
-    except Exception:
-        pass
 
     return specs
 
@@ -198,8 +205,10 @@ def train_candidate_model(name: str, estimator: Any, x_train: pd.DataFrame, y_tr
 def predict_probability(model: Pipeline, x: pd.DataFrame) -> np.ndarray:
     """Return positive-class probabilities for a fitted model."""
     if hasattr(model, "predict_proba"):
-        return model.predict_proba(x[FEATURE_COLUMNS])[:, 1]
-    decision = model.decision_function(x[FEATURE_COLUMNS])
+        probabilities = model.predict_proba(x[FEATURE_COLUMNS])
+        return np.asarray(probabilities)[:, 1]
+
+    decision = getattr(model, "decision_function")(x[FEATURE_COLUMNS])
     return 1 / (1 + np.exp(-decision))
 
 

@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import importlib.util
 import json
 from pathlib import Path
 
@@ -99,16 +98,15 @@ This is a propensity-ranking simulation based on validation data, not a claim of
 """
     (REPORT_DIR / "model_evaluation_report.md").write_text(model_report, encoding="utf-8")
 
-    method = "SHAP" if importlib.util.find_spec("shap") else "permutation importance"
     top_drivers = "\n".join(
         f"- `{row.feature}`: {row.importance_mean:.5f}"
         for row in importance.head(10).itertuples(index=False)
     )
     interpretation = f"""# Model Interpretability Report
 
-Interpretability method used in this environment: **{method}**.
+Primary interpretability artifact: **permutation importance**.
 
-The codebase is SHAP-ready and will use SHAP when the dependency is installed. The generated project artifact below uses permutation importance because SHAP is not available in the current Python environment.
+Permutation importance is used for the committed report because it is lightweight, deterministic, and works with the deployed scikit-learn pipeline. SHAP remains available as an optional local extension for deeper individual-level analysis.
 
 ## Global Drivers
 {top_drivers}

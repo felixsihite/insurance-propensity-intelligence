@@ -53,6 +53,6 @@
     "f1": 0.45998663182840127,
     "balanced_accuracy": 0.7855273177213776
   },
-  "training_seconds": 11.45,
+  "training_seconds": 7.76,
   "model_name": "Hist Gradient Boosting"
 }

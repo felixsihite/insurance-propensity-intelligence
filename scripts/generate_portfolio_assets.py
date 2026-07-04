@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-import shutil
 import json
+import shutil
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
@@ -13,9 +13,10 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 SCREENSHOT_DIR = PROJECT_ROOT / "outputs" / "dashboard_screenshots"
 OUTPUT_DIR = PROJECT_ROOT / "outputs" / "portfolio_assets"
 ASSET_DIR = PROJECT_ROOT / "streamlit_app" / "assets" / "portfolio_assets"
+Font = ImageFont.FreeTypeFont | ImageFont.ImageFont
 
 
-def font(size: int, bold: bool = False) -> ImageFont.FreeTypeFont:
+def font(size: int, bold: bool = False) -> Font:
     filename = "segoeuib.ttf" if bold else "segoeui.ttf"
     candidates = [
         Path("C:/Windows/Fonts") / filename,

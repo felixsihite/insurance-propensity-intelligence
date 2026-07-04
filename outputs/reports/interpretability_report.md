@@ -1,8 +1,8 @@
 # Model Interpretability Report
 
-Interpretability method used in this environment: **permutation importance**.
+Primary interpretability artifact: **permutation importance**.
 
-The codebase is SHAP-ready and will use SHAP when the dependency is installed. The generated project artifact below uses permutation importance because SHAP is not available in the current Python environment.
+Permutation importance is used for the committed report because it is lightweight, deterministic, and works with the deployed scikit-learn pipeline. SHAP remains available as an optional local extension for deeper individual-level analysis.
 
 ## Global Drivers
 - `Previously_Insured`: 0.05324

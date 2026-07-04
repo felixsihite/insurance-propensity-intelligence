@@ -6,10 +6,11 @@ from dataclasses import dataclass
 
 import numpy as np
 import pandas as pd
+from sklearn.pipeline import Pipeline
 
 from insurance_propensity.config import ID_COLUMN, TARGET_COLUMN
 from insurance_propensity.features.engineering import CrossValidatedTargetEncoder, InsuranceFeatureBuilder, add_propensity_deciles
-from insurance_propensity.models.modeling import FEATURE_COLUMNS
+from insurance_propensity.models.modeling import predict_probability
 
 
 @dataclass
@@ -18,7 +19,7 @@ class PropensityScorer:
 
     feature_builder: InsuranceFeatureBuilder
     target_encoder: CrossValidatedTargetEncoder
-    model_pipeline: object
+    model_pipeline: Pipeline
     model_name: str
     validation_metrics: dict
 
@@ -29,12 +30,12 @@ class PropensityScorer:
 
     def predict_proba(self, raw_df: pd.DataFrame) -> np.ndarray:
         features = self.prepare_features(raw_df)
-        return self.model_pipeline.predict_proba(features[FEATURE_COLUMNS])[:, 1]
+        return predict_probability(self.model_pipeline, features)
 
     def score(self, raw_df: pd.DataFrame) -> pd.DataFrame:
         features = self.prepare_features(raw_df)
         output = raw_df.copy()
-        output["propensity_score"] = self.model_pipeline.predict_proba(features[FEATURE_COLUMNS])[:, 1]
+        output["propensity_score"] = predict_probability(self.model_pipeline, features)
         intelligence_columns = [
             "age_group",
             "premium_band",

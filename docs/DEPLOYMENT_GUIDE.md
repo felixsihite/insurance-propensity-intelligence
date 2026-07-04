@@ -65,7 +65,7 @@ Use these settings when deploying from GitHub:
 | Branch | `main` |
 | Main file path | `streamlit_app/app.py` |
 | App URL | `insurance-propensity-intelligence` |
-| Python version | `3.12` recommended |
+| Python version | `3.13` |
 
 Live app URL after deployment:
 

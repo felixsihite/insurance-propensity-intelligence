@@ -233,8 +233,8 @@ Analysis chart assets for case-study sections:
 Python compatibility:
 
 - Local environment verified with Python `3.13.1`
-- Project configuration supports Python `>=3.11`
-- For Streamlit Community Cloud, Python `3.12` is recommended unless you choose another supported version in Advanced settings
+- Project configuration is standardized on Python `>=3.13,<3.14`
+- For Streamlit Community Cloud, choose Python `3.13` in Advanced settings so local and deployed environments stay aligned
 
 Create and activate an environment, then install dependencies:
 
@@ -284,7 +284,7 @@ After pushing to GitHub, deploy on Streamlit Community Cloud:
 - Branch: `main`
 - Main file path: `streamlit_app/app.py`
 - App URL/subdomain: `insurance-propensity-intelligence`
-- Python version: choose `3.12` in Advanced settings, or another supported version if preferred
+- Python version: choose `3.13` in Advanced settings
 
 If Streamlit asks for dependencies, keep `requirements.txt` in the repository root. Optional modeling accelerators are separated into `requirements-optional.txt` and are not required for the deployed dashboard.
 

@@ -2,7 +2,7 @@
 name = "insurance-customer-propensity-prediction"
 version = "1.0.0"
 description = "Enterprise-grade insurance cross-sell propensity prediction and customer intelligence portfolio project."
-requires-python = ">=3.11"
+requires-python = ">=3.13,<3.14"
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]

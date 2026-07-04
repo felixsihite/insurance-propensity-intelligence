@@ -101,7 +101,7 @@ class CrossValidatedTargetEncoder:
         stats = pd.DataFrame({"category": x.astype(str), "target": y}).groupby("category")["target"].agg(["mean", "count"])
         assert self.global_mean_ is not None
         smoothed = (stats["mean"] * stats["count"] + self.global_mean_ * self.smoothing) / (stats["count"] + self.smoothing)
-        return smoothed.to_dict()
+        return {str(category): float(value) for category, value in smoothed.items()}
 
     def fit_transform(self, df: pd.DataFrame, y: pd.Series) -> pd.DataFrame:
         output = df.copy()
