@@ -2,9 +2,9 @@
 
 Enterprise-grade Data Science portfolio project for predicting which existing health insurance customers are most likely to purchase vehicle insurance. The project combines data quality control, leakage-safe feature engineering, propensity modeling, customer ranking, interpretability, SQL analysis, campaign targeting simulation, and a Streamlit scoring dashboard.
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://insurance-propensity-intelligence.streamlit.app)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://insurance-propensity-intelligence-nzjwpm5ml3lx2f9vtwch9n.streamlit.app/)
 
-Live demo: `https://insurance-propensity-intelligence.streamlit.app`
+Live demo: `https://insurance-propensity-intelligence-nzjwpm5ml3lx2f9vtwch9n.streamlit.app/`
 
 ![Dashboard preview](outputs/charts/dashboard_executive_preview.png)
 
@@ -283,7 +283,7 @@ After pushing to GitHub, deploy on Streamlit Community Cloud:
 - Repository: `felixsihite/insurance-propensity-intelligence`
 - Branch: `main`
 - Main file path: `streamlit_app/app.py`
-- App URL/subdomain: `insurance-propensity-intelligence`
+- App URL/subdomain: `insurance-propensity-intelligence-nzjwpm5ml3lx2f9vtwch9n`
 - Python version: choose `3.13` in Advanced settings
 
 If Streamlit asks for dependencies, keep `requirements.txt` in the repository root. Optional modeling accelerators are separated into `requirements-optional.txt` and are not required for the deployed dashboard.

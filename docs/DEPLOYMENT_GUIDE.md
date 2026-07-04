@@ -64,13 +64,13 @@ Use these settings when deploying from GitHub:
 | Repository | `felixsihite/insurance-propensity-intelligence` |
 | Branch | `main` |
 | Main file path | `streamlit_app/app.py` |
-| App URL | `insurance-propensity-intelligence` |
+| App URL | `insurance-propensity-intelligence-nzjwpm5ml3lx2f9vtwch9n` |
 | Python version | `3.13` |
 
 Live app URL after deployment:
 
 ```text
-https://insurance-propensity-intelligence.streamlit.app
+https://insurance-propensity-intelligence-nzjwpm5ml3lx2f9vtwch9n.streamlit.app/
 ```
 
 If the subdomain is unavailable, choose a similar subdomain and update the README badge/link.
